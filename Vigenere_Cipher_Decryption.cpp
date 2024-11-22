@@ -1,18 +1,38 @@
 //CIS-7 Final Project: Vigenere Cipher Decryption
 //By: Reuben Massey and Trinie Ngo
-//Date: November 20, 2024
+//Date: November 21, 2024
 //Due: December 8, 2024
 
 #include <iostream>
 #include <string>
 
+//function for vigenere cipher encryption
+std::string encrypted_message (std::string text, std::string keyword){
+    std::string encrypted_text = "";
+    int keyword_index = 0;
+    for (int i = 0; i < text.length(); i++){
+        if(isalpha(text[i])){
+            char encrypted_char = 'a' + ((text[i] - 'a' + keyword[keyword_index] - 'a') % 26);
+            encrypted_text += encrypted_char;
+            keyword_index++;
+        }
+        else {
+            encrypted_text += text[i];
+        }
+    }
+    return encrypted_text;
+}
+
+//function for vigenere cipher decryption
+std::string decrypted_message(std::string text2, std::string keyword){
+    std::string decrypted_text = "";
+}
+
+
 //main driver program
 int main() {
   int chosen_number;    //declaring variables
-  std::string message;
-  std::string keyword;
-  std::string encrypted_message;
-  std::string decrpyted_message;
+  std::string message, keyword;
 
     do {
         //main menu for user
@@ -27,13 +47,21 @@ int main() {
                 case 1:        //encrypt message
                     std::cout << "Please enter the message you would like to encrypt.\n";
                     std::cin >> message;
-                  
+                    std::cout << "Please enter the key/keyword.\n";
+                    std::cin >> keyword;
+                    std::string encrypted_text = encrypted_message(message, keyword);
+                    std::cout << "Encrypted message: " << encrypted_text << std::endl;
                     break;
+                
                 case 2:        //decrypt message
                     std::cout << "Please enter the message you would like to decrypt.\n";
                     std::cin >> message;
-                  
+                    std::cout << "Please enter the key/keyword.\n";
+                    std::cin >> keyword;
+                    std::string decrypted_text = decrypted_message(message, keyword);
+                    std::cout << "Decrypted message: " << decrypted_text << std::endl;
                     break;
+                
                 case 3:        //exit the program
                   std::cout << "Goodbye, thank you for using the Encryption/Decryption program!\n";
                     break;
