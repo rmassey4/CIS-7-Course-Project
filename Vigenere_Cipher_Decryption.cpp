@@ -1,11 +1,11 @@
 //CIS-7 Final Project: Vigenere Cipher Decryption
 //By: Reuben Massey and Trinie Ngo
-//Date: November 21, 2024
+//Date: December 2, 2024
 //Due: December 8, 2024
 
 #include <iostream>
 #include <string>
-
+#include <algorithm>
 //function for vigenere cipher encryption
 std::string encrypted_message (std::string text, std::string keyword){
     std::string encrypted_text = "";
@@ -29,7 +29,7 @@ std::string decrypted_message(std::string text2, std::string keyword){
     int keyword_index = 0;
     for (int i = 0; i < text2.length(); i++){
         if(isalpha(text2[i])){
-            char decrypted_char = 'a' + ((text2[i] - 'a' - (keyword[keyword_index] + 26) % 26));
+            char decrypted_char = 'a' + ((text2[i] - 'a' - (keyword[keyword_index] - 'a') + 26) % 26);
             decrypted_text += decrypted_char;
             keyword_index++;
         }
