@@ -1,6 +1,6 @@
 //CIS-7 Final Project: Vigenere Cipher Decryption
 //By: Reuben Massey and Trinie Ngo
-//Date: December 2, 2024
+//Date: December 5, 2024
 //Due: December 8, 2024
 
 #include <iostream>
@@ -12,7 +12,7 @@ std::string encrypted_message (std::string text, std::string keyword){
     int keyword_index = 0;
     for (int i = 0; i < text.length(); i++){
         if(isalpha(text[i])){
-            char encrypted_char = 'a' + ((text[i] - 'a' + keyword[keyword_index] - 'a') % 26);
+            char encrypted_char = 'a' + ((text[i] - 'a' + keyword[keyword_index % keyword.length()] - 'a') % 26);
             encrypted_text += encrypted_char;
             keyword_index++;
         }
@@ -29,7 +29,7 @@ std::string decrypted_message(std::string text2, std::string keyword){
     int keyword_index = 0;
     for (int i = 0; i < text2.length(); i++){
         if(isalpha(text2[i])){
-            char decrypted_char = 'a' + ((text2[i] - 'a' - (keyword[keyword_index] - 'a') + 26) % 26);
+            char decrypted_char = 'a' + ((text2[i] - 'a' - (keyword[keyword_index % keyword.length()] - 'a') + 26) % 26);
             decrypted_text += decrypted_char;
             keyword_index++;
         }
@@ -58,7 +58,7 @@ int main() {
             switch (chosen_number) {
                 case 1:        //encrypt message
                     {
-                    std::cout << "Please enter the message you would like to encrypt.\n";
+                    std::cout << "Please enter the message you would like to encrypt, with no spaces.\n";
                     std::cin >> message;
                     std::cout << "Please enter the key/keyword.\n";
                     std::cin >> keyword;
@@ -68,7 +68,7 @@ int main() {
                     }
                 case 2:        //decrypt message
                     {
-                    std::cout << "Please enter the message you would like to decrypt.\n";
+                    std::cout << "Please enter the message you would like to decrypt, with no spaces.\n";
                     std::cin >> message;
                     std::cout << "Please enter the key/keyword.\n";
                     std::cin >> keyword;
