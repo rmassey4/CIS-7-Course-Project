@@ -10,7 +10,7 @@ Date published: December 5th, 2024
 - There is basic checks for valid menu selection to ensure proper program functionality within the appropriate options.
 - The program will only encrypt/decrypt lowercase alphabetic characters (a-z).
 - Non-alphabetic characters like numbers or special symbols will remain unchanged during encryption/decryption.
-- The program does not process spaces between the message, therefore messages will be to be input as a single string.
+- The program does not process spaces between the message, therefore messages will need to be input as a single string.
 
 ## Program Instructions
 - Compile and Run the program.
